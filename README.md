@@ -11,5 +11,7 @@ Only the required and necessary components are designed for quick overturn.
 
 The user should have JRE and Maven configured in their machine to run the project.
 
-The following git link provides access to the project folder saved by the name **Yahoo**.
-https://github.com/shamanthsomegowda/DBiz-Assessment.git
+The following git link provides access to the project.
+
+https://github.com/SagarNagaraju/POC_Automation.git
+
