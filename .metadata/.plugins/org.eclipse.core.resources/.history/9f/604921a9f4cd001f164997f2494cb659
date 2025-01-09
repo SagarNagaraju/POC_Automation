@@ -1,0 +1,4 @@
+#Login Module test data-start
+searchStock=TSLA
+password=Test1234
+userNameAfterLogin=Welcome

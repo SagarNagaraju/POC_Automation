@@ -1,0 +1,22 @@
+package testMethods;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.Test;
+
+import initializer.PageInitializer;
+
+public class YahooFinanceTest extends PageInitializer {
+	
+	// Search for the stock and verify stock Details
+    @Test
+    public void verifyStockDetailsFunctionality() {
+        
+        yahooFinancePage()
+            .searchStock("TSLA")                     // Searches for TSLA
+            .verifyAutosuggestResult("Tesla Inc.")   // Verifies the autosuggest result
+            .clickOnFirstEntry()                     // Clicks on the first autosuggestion
+            .verifyStockPrice()                      // Verifies the stock price
+            .verifyAdditionalData();                 // Verifies the additional data like "Previous Close" and "Volume"
+    }
+
+}

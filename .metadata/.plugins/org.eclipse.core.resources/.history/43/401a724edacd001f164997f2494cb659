@@ -1,0 +1,46 @@
+package mainClass;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class MainWebDriverClass {
+
+	public static WebDriver driver;
+	
+	
+	  public static WebDriver getDriver() {
+		  return driver; 
+		  }
+	 
+    @BeforeClass()
+	public WebDriver initDriver() {
+		
+		// Using WebDriverManager to manage ChromeDriver binary
+        WebDriverManager.chromedriver().setup();
+        
+        // Configuring Chrome Options
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized"); // Optional: Start Chrome maximized
+        
+        // Create a WebDriver instance with ChromeOptions
+        WebDriver driver = new ChromeDriver(options);
+
+        // Navigate to the desired URL
+        driver.get("https://finance.yahoo.com/");
+                     
+        
+		return driver;
+	}
+    
+    @AfterClass
+    public void destrory() {
+    	 // Make sure the driver quits after execution
+        driver.quit();
+    }
+
+}

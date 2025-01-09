@@ -1,0 +1,4 @@
+#Login Module test data-start
+username=sachin.gudi@unilogcorp.com
+password=Test1234
+userNameAfterLogin=Welcome

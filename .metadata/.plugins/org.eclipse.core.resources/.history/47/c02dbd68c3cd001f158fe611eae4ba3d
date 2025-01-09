@@ -1,0 +1,33 @@
+package mainClass;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class MainWebDriverClass {
+
+	public static WebDriver driver;
+	
+	
+	  public WebDriver getDriver() { return driver; }
+	 
+	public static void main(String[] args) throws InterruptedException{
+		
+		WebDriver driver=WebDriverManager.chromedriver().create();
+		
+		/*
+		 * String currentDir = System.getProperty("user.dir"); String driverPath =
+		 * currentDir+"\\driver\\chromedriver.exe"; System.out.println(driverPath);
+		 * System.setProperty("webdriver.chrome.driver", driverPath); 
+		  */
+		// driver = new ChromeDriver();
+		
+		driver.get("www.google.com");
+		Thread.sleep(10000);
+		driver.manage().window().maximize();
+		driver.quit();
+		
+	}
+
+}

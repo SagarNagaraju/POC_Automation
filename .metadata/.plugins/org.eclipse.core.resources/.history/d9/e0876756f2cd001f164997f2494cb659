@@ -1,0 +1,19 @@
+package testMethods;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.Test;
+
+import initializer.PageInitializer;
+
+public class YahooFinanceTest extends PageInitializer {
+	
+    @Test
+	public void verifyStockDetailsFuncationality() throws InterruptedException {
+	  
+    	yahooFinancePage().searchStock("TSLA")
+    	                 .verifyAutosuggestResult("Tesla Inc.")
+    	                 .clickOnFirstEntry()
+    	                 .verifyStockPrice()
+    	                 .verifyAdditionalData();
+  }
+}

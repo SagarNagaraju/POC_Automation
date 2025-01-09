@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <parameter name="Runheadless" value="false"/>
+  <parameter name="URL" value="https://finance.yahoo.com/"/>
+  <parameter name="Browser" value="edge"/>
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="testMethods.YahooFinanceTest">
+        <methods>
+          <include name="verifyStockDetailsFunctionality"/>
+          <include name="initDriver"/>
+          <include name="cleanup"/>
+        </methods>
+      </class> <!-- testMethods.YahooFinanceTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,25 @@
+package utility;
+
+import utility.PropertyFileMethods;
+
+public class TestDataPropertyFile {
+
+	String filePath = "src/test/resources/TestData.properties";
+
+
+	PropertyFileMethods propertyFileMethods = new PropertyFileMethods();
+
+	public String getSearchText() {
+		String searchText = propertyFileMethods.readTestDataFromPropertyFile(filePath, "searchText");
+		return searchText;
+	}
+
+	public String getSearchStock() {
+		return propertyFileMethods.readTestDataFromPropertyFile(filePath, "searchStock");
+	}
+
+	public String getPassword() {
+		return propertyFileMethods.readTestDataFromPropertyFile(filePath, "password");
+	}
+
+}

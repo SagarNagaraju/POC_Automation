@@ -1,0 +1,11 @@
+package resources;
+import mainClass.MainWebDriverClass;
+
+public class ExtentReportNG extends MainWebDriverClass {
+	
+	public static ExtentReports extentReport;
+	
+	public static String extentReportPrefix;
+	public static 
+
+}

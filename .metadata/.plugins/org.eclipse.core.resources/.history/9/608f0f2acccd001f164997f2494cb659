@@ -1,0 +1,40 @@
+package mainClass;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class MainWebDriverClass {
+
+	public static WebDriver driver;
+	
+	
+	  public WebDriver getDriver() { return driver; }
+	 
+	public static void main(String[] args) throws InterruptedException{
+		
+		//WebDriverManager.chromedriver().setup();
+		
+		
+		  //String currentDir = System.getProperty("user.dir"); 
+		  //String driverPath =currentDir+"C:\\Users\\SagarN\\OneDrive - DIGITAL BIZ SOLUTIONS PTE. LTD\\Desktop\\POC_Automation\\Yahoo_POC\\driver\\chromedriver.exe"; 
+		  //System.out.println(driverPath);
+		  System.setProperty("webdriver.chrome.driver", "C:\\Users\\SagarN\\OneDrive - DIGITAL BIZ SOLUTIONS PTE. LTD\\Desktop\\POC_Automation\\Yahoo_POC\\driver\\chromedriver.exe"); 
+		  driver = new ChromeDriver(); 
+		  driver.get("www.google.com");
+		
+		/*
+		 * driver = new ChromeDriver(); driver.get("www.google.com");
+		 * Thread.sleep(10000); driver.manage().window().maximize(); driver.quit();
+		 */
+		
+		/*
+		 * ChromeOptions option=new ChromeOptions();
+		 * option.addArguments("--remote-allow-origins=*"); driver=new
+		 * ChromeDriver(option); driver.get("www.google.com"); driver.quit();
+		 */
+	}
+
+}

@@ -1,0 +1,106 @@
+package pageObjects;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import initializer.PageInitializer;
+import utility.WaitingMethods;
+
+public class YahooFinacePageObjects extends PageInitializer{
+	
+	
+	WaitingMethods waiting = new utility.WaitingMethods(getDriver());
+
+	
+	@FindBy(xpath = "//input[@placeholder='Search for news, symbols or companies']")
+	private WebElement searchTextboxXpath;
+	
+	@FindBy(xpath = "//button[@type='submit']")
+	private WebElement searchButtonXpath;
+	
+	@FindBy(xpath = "//span[@data-testid='qsp-price']")
+	private WebElement stockPriceXpath;
+	
+	@FindBy(xpath = "//div[contains(@data-id,'search-assist')]/ul[@role='listbox']/li[@data-type='quotes']//div[contains(@class,'quoteCompanyName')]")
+	private List<WebElement> autosuggestionXpath;
+	
+	@FindBy(xpath = "//span[@title='Previous Close']//following-sibling::span")
+	private WebElement previousCloseValueXpath;
+	
+	@FindBy(xpath = "//span[@title='Volume']//following-sibling::span")
+	private WebElement volumeValueXpath;
+	
+
+	
+	
+	public YahooFinacePageObjects searchStock(String stock) {
+		
+		waiting.waitForVisibilityOfElement(searchTextboxXpath, Duration.ofSeconds(10));		
+		searchTextboxXpath.sendKeys(stock);
+		System.out.println("Searched stock :"+stock);
+		return this;
+	}
+
+	public YahooFinacePageObjects clickOnSearchButton() {
+		waiting.waitForVisibilityOfElement(searchButtonXpath, Duration.ofSeconds(10));
+		searchButtonXpath.click();
+		System.out.println("Clicked on search button");
+		return this;
+	}
+	
+	public YahooFinacePageObjects verifyAutosuggestResult(String value) throws InterruptedException {
+		Thread.sleep(2000);
+		Assert.assertEquals(autosuggestionXpath.get(0).getText().replace(",",""), value);
+		System.out.println("Verified auto suggestion:"+value);
+		return this;
+	}
+	
+	public YahooFinacePageObjects clickOnFirstEntry() {
+		waiting.waitForVisibilityOfElement(autosuggestionXpath.get(0), Duration.ofSeconds(10));
+		autosuggestionXpath.get(0).click();
+		System.out.println("Clicked on first auto suggestion");
+		return this;
+	}
+
+	public YahooFinacePageObjects verifyStockPrice() {
+		waiting.waitForVisibilityOfElement(stockPriceXpath, Duration.ofSeconds(10));
+		int stock_price=Integer.parseInt(stockPriceXpath.getText());
+		if(stock_price>200) {
+			System.out.println("Stock price is greater than $200");
+		}
+		else {
+			System.out.println("Stock price is lesser than $200");
+		}
+		
+		return this;
+	}
+
+	
+	public YahooFinacePageObjects verifyAdditionalData()  {
+		waiting.waitForVisibilityOfElement(previousCloseValueXpath, Duration.ofSeconds(10));
+		String previous_close=previousCloseValueXpath.getText();
+		String volume=volumeValueXpath.getText();
+		System.out.println("Previous Close :"+previous_close);
+		System.out.println("Volume :"+volume);
+		
+		return this;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+
+}

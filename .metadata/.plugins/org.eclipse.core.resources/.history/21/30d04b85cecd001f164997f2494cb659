@@ -1,0 +1,16 @@
+package Initializer;
+
+import org.openqa.selenium.support.PageFactory;
+
+import Main.MainClass;
+import PageObjects.YahooFinacePageObjects;
+
+public class PageInitializer extends MainClass{
+	
+	public YahooFinacePageObjects yahooFinacePage() {
+		YahooFinacePageObjects yahooFinacePage = PageFactory.initElements(getDriver(), YahooFinacePageObjects.class);
+		return yahooFinacePage;
+	}
+
+
+}
